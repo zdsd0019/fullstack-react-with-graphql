@@ -6,9 +6,9 @@ const mongoose = require('mongoose');
 
 require('dotenv').config({ path: "variables.env"})
 
-const Recipe = require("./Recipe");
+const Recipe = require("./models/Recipe");
 
-const User = require("./User");
+const User = require("./models/User");
 
 // Bring in GraphQl express middleware
 const { graphiqlExpress, graphqlExpress } = require ('apollo-server-express');
