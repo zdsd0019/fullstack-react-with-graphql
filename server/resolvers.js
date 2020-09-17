@@ -1,21 +1,25 @@
-const Recipe = require("./models/Recipe")
+const Recipe = require("./models/Recipe");
+const { find } = require("./models/Recipe");
 
-exports.resolver = {
+exports.resolvers = {
     Query: {
-        getAllRecipes: () => {}
+        getAllRecipes: async (root, args, { Recipe }) => {
+            const allRecipes = await Recipe.find();
+            return allRecipes ;
+        }
     },
 
     Mutation: {
 
-        addRecipe: async (root, { name, category, description, instructions, username }, { Recipe }) => {
+        addRecipe: async (root, { name, category, description, instructions, userName }, { Recipe }) => {
             const newRecipe = await new Recipe({
                 name,
                 description,
                 category,
                 instructions,
-                username
+                userName
             }).save();
-            return newRecipe
+            return newRecipe;
         }
     }
 }
