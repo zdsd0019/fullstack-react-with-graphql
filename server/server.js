@@ -2,6 +2,8 @@ const express = require('express');
 
 const bodyParser = require('body-parser');
 
+const  cors = require('cors');
+
 const mongoose = require('mongoose');
 
 require('dotenv').config({ path: "variables.env"})
@@ -35,6 +37,13 @@ mongoose
 // Initializes application
 
 const app = express();
+
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true
+}
+
+app.use(cors(corsOptions));
 
 // Create GraphQL application
 app.use('/graphiql', graphiqlExpress({ 

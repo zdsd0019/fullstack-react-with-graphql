@@ -2,12 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './components/App';
+import Applloclient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
 
+const client = new Applloclient({
+  uri: "http://localhost:4444/graphql"
+})
 
 ReactDOM.render(
-  <React.StrictMode>
+<ApolloProvider client={ client }>
     <App />
-  </React.StrictMode>,
+  </ApolloProvider>,
   document.getElementById('root')
 );
 
