@@ -7,12 +7,12 @@ type Recipe {
     instructions: String!
     createdDate: String!
     likes: Int,
-    userName: String
+    username: String
 }
 
 type User {
     _id: ID
-    userName: String! @Unique
+    username: String! @Unique
     password: String!
     email: String!
     joinDate: String
@@ -28,8 +28,8 @@ type Token {
 }
 
 type Mutation {
-    addRecipe(name: String!, category: String!, description: String!, instructions: String!, userName: String ) : Recipe
+    addRecipe(name: String!, category: String!, description: String!, instructions: String!, username: String ) : Recipe
 
-    signupUser(userName: String!, email: String!, password: String! ): Token
+    signupUser(username: String!, email: String!, password: String! ): Token
 }
 `
