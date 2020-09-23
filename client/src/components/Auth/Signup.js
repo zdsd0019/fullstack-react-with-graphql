@@ -1,4 +1,6 @@
 import React from 'react';
+import { Mutation } from 'react-apollo';
+import { SIGNUP_USER } from '../../queries';
 
 class Signup extends React.Component {
 
@@ -21,14 +23,23 @@ class Signup extends React.Component {
         return (
             <div className="App">
                 <h2 className="App">Signup</h2>   
-                <form className="form">
-                    <input type="text" name="username" placeholder="username" value={ username } onChange={ this.handleChange } />
-                    <input type="email" name="email" placeholder="Email Address" value={ email } onChange={ this.handleChange } />
-                    <input type="password" name="password" placeholder="password" value={ password }  onChange={ this.handleChange } />
-                    <input type="password" name="passwordConfirmation" placeholder="Confirm Password" value={ passwordConfirmation }  onChange={ this.handleChange } />
-                    <button type="submit" className="button-primary">Submit</button>
-                </form>
 
+                <Mutation mutation={SIGNUP_USER}>
+                    {() => {
+
+
+                        return (
+                            <form className="form">
+                                <input type="text" name="username" placeholder="username" value={ username } onChange={ this.handleChange } />
+                                <input type="email" name="email" placeholder="Email Address" value={ email } onChange={ this.handleChange } />
+                                <input type="password" name="password" placeholder="password" value={ password }  onChange={ this.handleChange } />
+                                <input type="password" name="passwordConfirmation" placeholder="Confirm Password" value={ passwordConfirmation }  onChange={ this.handleChange } />
+                                <button type="submit" className="button-primary">Submit</button>
+                            </form>
+                        )
+                    }}
+     
+                </Mutation>
             </div>
         )
     }
